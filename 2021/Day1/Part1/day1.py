@@ -20,7 +20,7 @@ for line in Lines:
 
     if int(line) > base:
 
-        count = count + 1
+        count += 1
 
     #Set the new baesline to the current depth which is the line value.
 

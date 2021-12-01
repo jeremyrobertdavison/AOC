@@ -25,7 +25,7 @@ for i in range (len(Lines) - 2):
 
     if base > 0 and new > base:
 
-        count = count + 1
+        count += 1
 
     #Set the new baseline to the new value to establish the new current depth.
 
