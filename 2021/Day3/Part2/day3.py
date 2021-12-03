@@ -1,10 +1,9 @@
 #Jeremy Davison AoC 2021 Challenge Responses
-#https://adventofcode.com/2021/day/1/
+#https://adventofcode.com/2021/day/3/
 #https://github.com/jeremyrobertdavison
 
 #Open the File with my Input from AoC
 
-#Note to myself: This was done very quickly, and could be cleaned up. We should only need a single bit counter function and a function can be used to convert binary and base 10. The reporting strings at the end should be moved to one line
 
 input = open('input.txt', 'r')
 
