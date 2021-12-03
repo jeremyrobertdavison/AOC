@@ -62,9 +62,9 @@ def bitCounterC02(pos, BinaryLines):
 
         return 1
 
-#function to test that the bitcounter results match the binary set
+#function to filter the binary set based on criteria
 
-def recalc(comp, pos, BinaryLines):
+def bitFilter(comp, pos, BinaryLines):
 
     if len(BinaryLines) > 1:
 
@@ -78,8 +78,8 @@ def recalc(comp, pos, BinaryLines):
 
 #Perform the count & calculations
 for x in range(12):
-    o2 = recalc(bitCounter02(x, o2), x, o2)
-    co2 = recalc(bitCounterC02(x, co2), x, co2)
+    o2 = bitFilter(bitCounter02(x, o2), x, o2)
+    co2 = bitFilter(bitCounterC02(x, co2), x, co2)
 
 cO2Total = int(co2[0], 2)
 
