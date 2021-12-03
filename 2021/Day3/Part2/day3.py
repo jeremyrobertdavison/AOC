@@ -12,64 +12,86 @@ Lines = input.readlines()
 
 #Create functions to return which is higher, given the Lines from the file and the position in the binary string
 
-def bitCounterGamma(Lines, pos):
-    count0 = 0
-    count1 = 0
-    for line in Lines:
-        if line[pos] == "0":
-            count0 += 1
-        elif line[pos] == "1":
-            count1 += 1
+o2 = Lines
+co2 = Lines
+
+#Create functions to count for 02 and C02 values, returning either the 0 or 1.
+
+def bitCounter02(pos, BinaryLines):
+
+    zero = 0
+
+    one = 0
+
+    for i in BinaryLines:
+
+        if i[pos] == "0":
+
+            zero += 1
+
         else:
-            print("ERROR")
-    if count0 > count1:
-        return 0
-    else:
+
+            one += 1
+
+    if one >= zero:
+
         return 1
 
-def bitCounterEpsilon(Lines, pos):
-    count0 = 0
-    count1 = 0
-    for line in Lines:
-        if line[pos] == "0":
-            count0 += 1
-        elif line[pos] == "1":
-            count1 += 1
-        else:
-            print("ERROR")
-    if count0 < count1:
-        return 0
     else:
+
+        return 0
+
+def bitCounterC02(pos, BinaryLines):
+
+    zero = one = 0
+
+    for i in BinaryLines:
+
+        if i[pos] == "0":
+
+            zero += 1
+
+        else:
+
+            one += 1
+
+    if one >= zero:
+
+        return 0
+
+    else:
+
         return 1
 
-#Set gamma and epsilon variables and use the function to return a full binary string representing which is higher in count between 0 and 1
+#function to test that the bitcounter results match the binary set
 
-gamma = ''
+def recalc(comp, pos, BinaryLines):
 
-for i in range(0,12):
-    x = str(bitCounterGamma(Lines,i))
-    gamma = gamma + x
+    if len(BinaryLines) > 1:
 
-epsilon = ''
+        BinaryLines_ReCalc = [i for i in BinaryLines if int(i[pos]) == comp]
 
-for i in range(0,12):
-    y = str(bitCounterEpsilon(Lines,i))
-    epsilon = epsilon + y
+        return BinaryLines_ReCalc
 
-#Convert the strings between binary and base 10. Then perform the math and report back the answer.
+    else:
 
-print("Gamma in Binary is: " + gamma)
+        return BinaryLines
 
-gammaBin = int(gamma, 2)
+#Perform the count & calculations
+for x in range(12):
+    o2 = recalc(bitCounter02(x, o2), x, o2)
+    co2 = recalc(bitCounterC02(x, co2), x, co2)
 
-print("Gamma in Decimal is: " + str(gammaBin))
+cO2Total = int(co2[0], 2)
 
-print("Epsilon in Binary is: " + epsilon)
+O2Total = int(o2[0], 2)
 
-epsilonBin = int(epsilon, 2)
+answer = cO2Total * O2Total
 
-print("Epsilon in Decimal is: " + str(epsilonBin))
+#Report the answer to the screen
 
-answer = epsilonBin * gammaBin
+print("The C02 Value is: " + str(cO2Total))
 
-print("The answer is: " + str(answer))
+print("The O2 Value is: " + str(O2Total))
+
+print("The Answer is: " + str(answer))
